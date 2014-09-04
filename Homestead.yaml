@@ -1,20 +1,29 @@
 ---
 ip: "192.168.10.10"
 memory: 2048
-cpus: 1
+cpus: 2
 
-authorize: ~/.ssh/id_rsa.pub
+authorize: C:/Users/michal/.ssh/id_rsa.pub
 
 keys:
-    - ~/.ssh/id_rsa
+    - c:/Users/michal/.ssh/id_rsa
 
 folders:
-    - map: ~/Code
+    - map: C:/Development/vagrant/homestead/Code
       to: /home/vagrant/Code
+      type: rsync
 
 sites:
     - map: homestead.app
       to: /home/vagrant/Code/Laravel/public
+    - map: beanstalk.app
+      to: /home/vagrant/Code/beanstalk_console/public
+    - map: xml.c4m.app
+      to: /home/vagrant/Code/c4m_ssm/schema
+    - map: "*.c4m.app"
+      to: /home/vagrant/Code/c4m_ssm/public
+    - map: phpmyadmin.app
+      to: /home/vagrant/Code/phpmyadmin
 
 variables:
     - key: APP_ENV
